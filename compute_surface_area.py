@@ -6,7 +6,8 @@ def main():
     heights = [10.16, 11.91, 11.59, 11.91, 17.78, 14.29, 8.89, 7.62, 17.78, 12.38, 11.27, 11.11]
     costs = [0.28, 0.43, 0.45, 0.61, 0.86, 0.83, 0.22, 0.26, 1.53, 0.34, 0.38, 0.42]
 
-    max_value = None
+    max_value = -1
+    max_name = ""
 
     for i in range(12):
         volume = compute_volume(radius[i], heights[i])
@@ -15,13 +16,11 @@ def main():
         cost = compute_cost_efficiency(volume, costs[i])
         print(f"{names[i]} {storage_efficiency:.2f} ${cost:.2f}")
 
-        if max_value != None:
-            pass
-        else:
-            max_value = costs[i]
+        if cost < max_value:
+            max_value = cost
+            max_name = names[i]
 
-    print(f"{names[int(max_value)]} ${compute_cost_efficiency(compute_volume(radius[int(max_value)], heights[int(max_value)]), costs[max_value])}")
-
+    print(f"{max_name.capitalize()} has the best cost efficiency with {max_value:.2f}")
 
 def compute_volume(radius, height):
     volume = math.pi * (radius * radius) * height
