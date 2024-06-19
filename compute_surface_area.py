@@ -16,7 +16,7 @@ def main():
         cost = compute_cost_efficiency(volume, costs[i])
         print(f"{names[i]} {storage_efficiency:.2f} ${cost:.2f}")
 
-        if cost < max_value:
+        if cost > max_value:
             max_value = cost
             max_name = names[i]
 
