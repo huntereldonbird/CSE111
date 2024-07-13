@@ -36,7 +36,7 @@ def main():
 
             Total = subtotal + tax
 
-    if(int(WeekDay) == 4 or int(WeekDay) == 2):
+    if(int(WeekDay) == 3 or int(WeekDay) == 2):
 
         print("NOT HERE THOUGH")
 
