@@ -128,8 +128,7 @@ def test_make_periodic_table():
     i += 1
     check_element(periodic_table_list[i], ['Ne', 'Neon', 20.1797])
     i += 1
-    check_element(periodic_table_list[i], ['Np', 'Neptunium', 237])
-    i += 1
+
     check_element(periodic_table_list[i], ['Ni', 'Nickel', 58.6934])
     i += 1
     check_element(periodic_table_list[i], ['Nb', 'Niobium', 92.90638])

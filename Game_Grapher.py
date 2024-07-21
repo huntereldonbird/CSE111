@@ -1,7 +1,15 @@
 import pandas as pd
 
 def GetWinRate(games, wins):
-    pass
+    
+    val = round((wins / games) * 100)
+
+    return val
+
+def LoadDataFrame(fileName):
+
+    df = pd.read_csv(fileName)
+    return df
 
 
 
@@ -9,8 +17,10 @@ def GetPlayerInfo(df, playerName):
     Wins = 0
     Games = 0
 
+    row_index = df.index[df['Players'] == playerName].tolist()
+
     for x in range(0, df.shape[1]):
-        cell = df.iloc[4, x]
+        cell = df.iloc[row_index[0], x]
 
         if((cell == "Rebel Win") or (cell == "Empire Win") or (cell == "Const Win")):
             print("WINNER")
@@ -24,12 +34,16 @@ def GetPlayerInfo(df, playerName):
 
 
 def main():
-    df = pd.read_csv("Score.csv")
 
-    wins, loss = GetPlayerInfo(df, "Eldon")
+    playerIn = input("Which player Do you want info for : ")
+    
+    df = LoadDataFrame("Score.csv")
 
-    print(f"Wins: {wins}, Loss: {loss}")
+    wins, games = GetPlayerInfo(df, playerIn)
 
+    percent = GetWinRate(games, wins)
+
+    print(f"Wins: {wins}, Games: {games} with a win% of, {percent}%")
 
 
 
